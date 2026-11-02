@@ -1,0 +1,68 @@
+
+# Capacities of jugs
+JUG_A = 4
+JUG_B = 3
+
+# Initial state
+start = (0, 0)
+
+# Stack for DFS
+stack = [(start, [start])]
+
+# To store visited states
+visited = set()
+
+# DFS
+while stack:
+
+    # Remove the last inserted state
+    state, path = stack.pop()
+
+    a, b = state
+
+    # Skip already visited states
+    if state in visited:
+        continue
+
+    visited.add(state)
+
+    # Check goal
+    if a == 2:
+        print("Goal Reached!")
+        print("Solution Path:")
+
+        for step in path:
+            print(step)
+
+        break
+
+    # Generate possible next states
+
+    # 1. Fill Jug A
+    next_states = [
+        (JUG_A, b),
+
+        # 2. Fill Jug B
+        (a, JUG_B),
+
+        # 3. Empty Jug A
+        (0, b),
+
+        # 4. Empty Jug B
+        (a, 0),
+
+        # 5. Pour A into B
+        (a - min(a, JUG_B - b),
+         b + min(a, JUG_B - b)),
+
+        # 6. Pour B into A
+        (a + min(b, JUG_A - a),
+         b - min(b, JUG_A - a))
+    ]
+
+    # Add new states to stack
+    for new_state in next_states:
+
+        if new_state not in visited:
+            stack.append((new_state, path + [new_state]))
+

@@ -1,0 +1,34 @@
+
+# Simple Reflex Vacuum Cleaner Agent
+
+A = "Dirty"
+B = "Dirty"
+
+location = "A"
+
+while True:
+
+    print("Current Location:", location)
+
+    if location == "A":
+        if A == "Dirty":
+            print("Action: Suck")
+            A = "Clean"
+        else:
+            print("Action: Move Right")
+            location = "B"
+
+    else:
+        if B == "Dirty":
+            print("Action: Suck")
+            B = "Clean"
+        else:
+            print("Action: Move Left")
+            location = "A"
+
+    print("Room A:", A)
+    print("Room B:", B)
+
+    if A == "Clean" and B == "Clean":
+        print("Both rooms are clean!")
+        break

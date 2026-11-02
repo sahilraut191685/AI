@@ -1,0 +1,52 @@
+
+A = [3, 2, 1]
+B = []
+C = []
+
+def move_disk(source, destination):
+
+    # Condition 1: Source rod should not be empty
+    if len(source) == 0:
+        print("Invalid Move: Source is empty")
+        return
+
+    # Condition 2: Select only the top disk
+    disk = source[-1]
+
+    # Condition 3: Destination must be empty
+    # or its top disk must be bigger
+    if len(destination) == 0 or destination[-1] > disk:
+
+        # Condition 4: Move only one disk at a time
+        source.pop()
+        destination.append(disk)
+
+        print("Move disk", disk)
+        print("A =", A, "B =", B, "C =", C)
+        print()
+
+    else:
+        print("Invalid Move: Bigger disk cannot be placed on smaller disk")
+
+
+def tower_of_hanoi(n, source, auxiliary, destination):
+
+    if n == 1:
+        move_disk(source, destination)
+        return
+
+    tower_of_hanoi(n-1, source, destination, auxiliary)
+
+    move_disk(source, destination)
+
+    tower_of_hanoi(n-1, auxiliary, source, destination)
+
+
+print("Initial State:")
+print("A =", A, "B =", B, "C =", C)
+print()
+
+tower_of_hanoi(3, A, B, C)
+
+print("Goal State:")
+print("A =", A, "B =", B, "C =", C)

@@ -1,0 +1,56 @@
+
+
+import heapq
+
+start = (1, 2, 3,
+         4, 0, 6,
+         7, 5, 8)
+
+goal = (1, 2, 3,
+        4, 5, 6,
+        7, 8, 0)
+
+pq = [(0, start, [])]
+visited = set()
+
+while pq:
+
+    cost, state, path = heapq.heappop(pq)
+
+    if state in visited:
+        continue
+
+    visited.add(state)
+
+    path = path + [state]
+
+    if state == goal:
+        print("Solution Found!")
+        print("Total Moves:", cost)
+
+        for s in path:
+            for i in range(0, 9, 3):
+                print(s[i:i+3])
+            print()
+
+        break
+
+    zero = state.index(0)
+
+    moves = [-3, 3, -1, 1]
+
+    for move in moves:
+        new = zero + move
+
+        if 0 <= new < 9:
+            if not (move == -1 and zero % 3 == 0) and not (move == 1 and zero % 3 == 2):
+
+                new_state = list(state)
+                new_state[zero], new_state[new] = new_state[new], new_state[zero]
+                new_state = tuple(new_state)
+
+                if new_state not in visited:
+                    heapq.heappush(pq, (cost + 1, new_state, path))
+
+else:
+    print("No solution")
