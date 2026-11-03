@@ -63,6 +63,95 @@ while stack:
     # Add new states to stack
     for new_state in next_states:
 
+
+
+
+
+
+#another code better one 
+
+
+
+JUG_A = 4
+JUG_B = 3
+
+start = (0, 0)
+
+# Stack stores: (state, path with descriptions)
+stack = [(start, [])]
+
+visited = set()
+
+while stack:
+
+    state, path = stack.pop()
+
+    a, b = state
+
+    if state in visited:
+        continue
+
+    visited.add(state)
+
+    # Goal check
+    if a == 2:
+
+        print("Goal Reached!")
+        print("Initial State: (0, 0)")
+        print()
+
+        for i, (action, new_state) in enumerate(path):
+            print(f"Step {i+1}: {action}")
+            print(f"Jug A = {new_state[0]} litres")
+            print(f"Jug B = {new_state[1]} litres")
+            print()
+
+        print("Final State:", state)
+        break
+
+    # Generate states with descriptions
+    next_states = [
+
+        # Fill A
+        ((JUG_A, b),
+         f"Fill Jug A with {JUG_A-a} litres"),
+
+        # Fill B
+        ((a, JUG_B),
+         f"Fill Jug B with {JUG_B-b} litres"),
+
+        # Empty A
+        ((0, b),
+         f"Empty Jug A ({a} litres)"),
+
+        # Empty B
+        ((a, 0),
+         f"Empty Jug B ({b} litres)"),
+
+        # Pour A into B
+        ((a - min(a, JUG_B-b),
+          b + min(a, JUG_B-b)),
+         f"Pour {min(a, JUG_B-b)} litres "
+         f"from Jug A to Jug B"),
+
+        # Pour B into A
+        ((a + min(b, JUG_A-a),
+          b - min(b, JUG_A-a)),
+         f"Pour {min(b, JUG_A-a)} litres "
+         f"from Jug B to Jug A")
+    ]
+
+    for new_state, action in next_states:
+
+        if new_state not in visited:
+            stack.append(
+                (new_state, path + [(action, new_state)])
+            )
+
+else:
+    print("No solution found")
+
+
         if new_state not in visited:
             stack.append((new_state, path + [new_state]))
 
