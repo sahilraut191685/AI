@@ -57,3 +57,27 @@ if solve(0):
         print(row)
 else:
     print("No solution")
+
+
+
+
+
+
+Practical 8: 8 Queens Problem using Backtracking
+Aim: To implement the 8 Queens Problem using the Backtracking technique in Python.
+
+Theory:
+
+The 8 Queens Problem is a classical Artificial Intelligence problem in which eight queens must be placed on an 8 × 8 chessboard such that no two queens attack each other.
+
+A queen can attack another queen horizontally, vertically and diagonally. Therefore, no two queens should be placed in the same row, column or diagonal.
+
+Backtracking is an algorithmic technique used to solve problems by building a solution incrementally. It tries a possible choice, checks whether the choice satisfies the given constraints, and proceeds further if the choice is valid.
+
+In this problem, queens are placed one column at a time. Before placing a queen, the algorithm checks whether the selected position is safe by examining the row and both diagonals on the previously processed side of the board.
+
+If a safe position is found, the queen is placed and the algorithm recursively moves to the next column. If no valid position is available, the algorithm backtracks by removing the previously placed queen and tries another position.
+
+The process continues until all eight queens are successfully placed.
+
+Conclusion: The 8 Queens Problem is successfully solved using Backtracking by placing queens in safe positions while satisfying all chessboard constraints.
