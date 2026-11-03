@@ -50,3 +50,37 @@ tower_of_hanoi(3, A, B, C)
 
 print("Goal State:")
 print("A =", A, "B =", B, "C =", C)
+
+
+
+
+
+
+Practical 3: Tower of Hanoi using Recursion
+Aim: To implement the Tower of Hanoi problem using recursion in Python.
+
+Theory:
+
+Tower of Hanoi is a mathematical puzzle consisting of three rods and a set of disks of different sizes. Initially, all disks are placed on the source rod in decreasing order of size.
+
+The objective is to move all disks from the source rod to the destination rod using an auxiliary rod while following three rules:
+1. Only one disk can be moved at a time.
+2. Only the topmost disk can be moved.
+3. A larger disk cannot be placed on a smaller disk.
+Recursion is a programming technique in which a function calls itself to solve smaller instances of the same problem.
+
+The Tower of Hanoi problem can be solved recursively by first moving \(n-1\) disks from the source rod to the auxiliary rod, then moving the largest disk to the destination rod, and finally moving the remaining \(n-1\) disks to the destination rod.
+
+The recurrence relation is:
+\[
+T(n)=2T(n-1)+1
+\]
+
+The minimum number of moves required is:
+\[
+T(n)=2^n-1
+\]
+
+Where \(n\) represents the number of disks.
+
+Conclusion: The Tower of Hanoi problem is successfully solved using recursion by following the given disk movement rules.
