@@ -55,6 +55,37 @@ print("A =", A, "B =", B, "C =", C)
 
 
 
+===============optional=================================
+
+count = 0
+
+def tower_of_hanoi(n, source, auxiliary, destination):
+    global count
+
+    if n == 1:
+        count += 1
+        print("Move disk 1 from", source, "to", destination)
+        return
+
+    tower_of_hanoi(n - 1, source, destination, auxiliary)
+
+    count += 1
+    print("Move disk", n, "from", source, "to", destination)
+
+    tower_of_hanoi(n - 1, auxiliary, source, destination)
+
+
+n = 3
+
+tower_of_hanoi(n, 'A', 'B', 'C')
+
+print("Total moves required:", count)
+
+
+
+=======================optional=========================================
+
+
 
 Practical 3: Tower of Hanoi using Recursion
 Aim: To implement the Tower of Hanoi problem using recursion in Python.
