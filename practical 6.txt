@@ -152,6 +152,57 @@ else:
     print("No solution found")
 
 
+
+
+
+
+
+
+
+Practical 6: Water Jug Problem using Depth First Search (DFS)
+Aim: To implement the Water Jug Problem using Depth First Search in Python.
+
+Theory:
+
+The Water Jug Problem is a classical state-space search problem in Artificial Intelligence. It involves two water jugs of different capacities and the objective is to measure a specific quantity of water using a set of permitted operations.
+
+In this practical, two jugs are considered: Jug A with a capacity of 4 litres and Jug B with a capacity of 3 litres. Initially, both jugs are empty. The objective is to obtain exactly 2 litres of water in Jug A.
+
+The problem is represented using states in the form of:
+\[
+(a,b)
+\]
+
+Where:
+- \(a\) represents the amount of water in Jug A.
+- \(b\) represents the amount of water in Jug B.
+The possible operations are:
+1. Fill Jug A.
+2. Fill Jug B.
+3. Empty Jug A.
+4. Empty Jug B.
+5. Pour water from Jug A into Jug B.
+6. Pour water from Jug B into Jug A.
+Depth First Search (DFS) is an uninformed search algorithm that explores one path as deeply as possible before backtracking. It uses a Stack data structure that follows the LIFO (Last In, First Out) principle.
+
+A visited set is maintained to avoid revisiting previously explored states. The algorithm continues generating possible states until the required quantity of water is obtained.
+
+Time Complexity:
+\[
+O(b^m)
+\]
+
+Space Complexity:
+\[
+O(bm)
+\]
+
+Where:
+- \(b\) = Branching factor.
+- \(m\) = Maximum depth of the search tree.
+Conclusion: The Water Jug Problem is successfully solved using Depth First Search by exploring possible states and performing valid water transfer operations.
+
+
         if new_state not in visited:
             stack.append((new_state, path + [new_state]))
 
