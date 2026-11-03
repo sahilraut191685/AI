@@ -32,3 +32,27 @@ while True:
     if A == "Clean" and B == "Clean":
         print("Both rooms are clean!")
         break
+
+
+===========================THEORY===========================================
+
+
+Practical 1: Simple Reflex Vacuum Cleaner Agent
+Aim: To implement a Simple Reflex Agent for a vacuum cleaner environment using Python.
+
+Theory:
+
+An Intelligent Agent is an entity that perceives its environment through sensors and performs actions through actuators to achieve a specific goal.
+
+A Simple Reflex Agent is a type of intelligent agent that selects its actions based only on the current percept. It uses predefined condition-action rules to decide what action to perform. It does not maintain memory of previous states.
+
+In the Vacuum Cleaner Problem, the environment consists of two rooms, A and B. Each room can be either clean or dirty. The vacuum cleaner senses its current location and the condition of the room. If the room is dirty, it performs the sucking action. If the room is clean, it moves to the other room.
+
+The agent continues performing these actions until both rooms become clean.
+
+PEAS Description:
+- Performance Measure: Both rooms should be clean.
+- Environment: Two rooms, A and B.
+- Actuators: Suck, Move Left and Move Right.
+- Sensors: Detect current location and room condition.
+Conclusion: The Simple Reflex Agent successfully cleans the rooms using predefined condition-action rules.
