@@ -32,3 +32,30 @@ while True:
 
     else:
         print("Chatbot: Sorry, I don't understand.")
+
+
+
+
+
+
+Practical 9: Simple Rule-Based Chatbot
+Aim: To develop a simple rule-based chatbot using Python.
+
+Theory:
+
+A chatbot is a software application designed to simulate human conversation through text or voice. It accepts input from users, processes the input and generates suitable responses.
+
+A Rule-Based Chatbot is a chatbot that works using predefined rules and conditional statements. It matches user input with predefined keywords or patterns and provides the corresponding response.
+
+In Python, conditional statements such as if, elif and else are used to identify user messages and generate appropriate replies. The input() function accepts messages from the user, while the lower() function converts the input into lowercase to make keyword matching case-insensitive.
+
+An infinite loop is used to maintain continuous interaction between the user and chatbot. The break statement terminates the chatbot when the user enters an exit command such as "bye".
+
+Unlike Machine Learning-based chatbots, a simple rule-based chatbot does not learn from previous conversations or use a trained model. Its responses are limited to predefined conditions.
+
+Applications:
+1. Customer support systems.
+2. Basic information services.
+3. Frequently Asked Questions (FAQ) systems.
+4. Educational assistance.
+Conclusion: A simple rule-based chatbot is successfully developed using Python conditional statements to interact with users and generate predefined responses.
