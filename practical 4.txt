@@ -87,3 +87,35 @@ print("\nBest Route:")
 print(" -> ".join(best_route), "->", best_route[0])
 
 print("Minimum Distance =", total_distance(best_route))
+
+
+
+
+
+
+
+
+Practical 4: Travelling Salesman Problem using Local Beam Search
+Aim: To implement the Travelling Salesman Problem using Local Beam Search in Python.
+
+Theory:
+
+The Travelling Salesman Problem (TSP) is a well-known optimization problem in Artificial Intelligence. It involves finding the shortest possible route for a salesman who must visit every city exactly once and return to the starting city.
+
+Local Beam Search is a heuristic search algorithm that maintains a fixed number of candidate states, represented by K. Instead of exploring only one solution at a time, it explores multiple candidate solutions simultaneously.
+
+Initially, a set of candidate routes is generated. The algorithm evaluates each route using an objective function, which calculates the total travelling distance.
+
+It then generates neighbouring solutions by modifying existing routes. The best K candidate solutions are selected based on their total distance. This process continues for a specified number of iterations.
+
+The objective function is:
+\[
+Cost(Route)=\sum_{i=0}^{n-2}d(c_i,c_{i+1})+d(c_{n-1},c_0)
+\]
+
+Where:
+- \(d(c_i,c_{i+1})\) represents the distance between consecutive cities.
+- The last term represents the return journey to the starting city.
+The algorithm attempts to minimize the total travelling distance.
+
+Conclusion: The Travelling Salesman Problem is approached using Local Beam Search by maintaining and improving multiple candidate routes.
