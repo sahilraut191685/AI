@@ -1,6 +1,7 @@
 
 import heapq
 
+# Initial and Goal States
 start = (1, 2, 3,
          4, 0, 6,
          7, 5, 8)
@@ -10,7 +11,7 @@ goal = (1, 2, 3,
         7, 8, 0)
 
 
-# Calculate Manhattan Distance
+# Manhattan Distance
 def heuristic(state):
     distance = 0
 
@@ -26,7 +27,13 @@ def heuristic(state):
     return distance
 
 
-# A* Search Algorithm
+# Print Puzzle Matrix
+def print_matrix(state):
+    for i in range(0, 9, 3):
+        print(state[i:i+3])
+
+
+# A* Search
 pq = [(heuristic(start), 0, start, [])]
 
 visited = set()
@@ -40,29 +47,38 @@ while pq:
 
     visited.add(state)
 
-    path = path + [state]
+    path = path + [(state, None)] if not path else path
 
     if state == goal:
         print("Solution Found!")
         print("Total Moves:", g)
 
-        for s in path:
-            for i in range(0, 9, 3):
-                print(s[i:i+3])
-            print()
+        print("\nInitial State:")
+        print_matrix(path[0][0])
+
+        for i in range(1, len(path)):
+            print("\nMove", i, ":", path[i][1])
+            print_matrix(path[i][0])
 
         break
 
     zero = state.index(0)
 
-    moves = [-3, 3, -1, 1]
+    moves = {
+        "UP": -3,
+        "DOWN": 3,
+        "LEFT": -1,
+        "RIGHT": 1
+    }
 
-    for move in moves:
+    for direction, move in moves.items():
+
         new = zero + move
 
         if 0 <= new < 9:
-            if not (move == -1 and zero % 3 == 0) and \
-               not (move == 1 and zero % 3 == 2):
+
+            if not (direction == "LEFT" and zero % 3 == 0) and \
+               not (direction == "RIGHT" and zero % 3 == 2):
 
                 new_state = list(state)
 
@@ -72,16 +88,21 @@ while pq:
                 new_state = tuple(new_state)
 
                 if new_state not in visited:
+
                     new_g = g + 1
                     new_h = heuristic(new_state)
                     new_f = new_g + new_h
 
+                    new_path = path + [(new_state, direction)]
+
                     heapq.heappush(
                         pq,
-                        (new_f, new_g, new_state, path)
+                        (new_f, new_g, new_state, new_path)
                     )
+
 else:
     print("No solution")
+
 
 
 
@@ -91,29 +112,49 @@ else:
 =============================THEORY===========================================
 
 
-Practical 2: 8 Puzzle Problem using Uniform Cost Search
-Aim: To implement the 8 Puzzle Problem using Uniform Cost Search in Python.
+# Practical 2: 8 Puzzle Problem using A* Search Algorithm
 
-Theory:
+## Aim
+To implement the 8 Puzzle Problem using the A* Search Algorithm in Python.
+
+## Theory
 
 The 8 Puzzle Problem is a classical Artificial Intelligence search problem consisting of a 3 × 3 board containing eight numbered tiles and one blank space represented by zero.
 
 The objective is to rearrange the tiles from the initial state to the desired goal state by moving adjacent tiles into the blank space.
 
-Uniform Cost Search (UCS) is an uninformed search algorithm that expands the node having the lowest cumulative path cost. It uses a priority queue to select the next node for exploration.
+**A* Search** is an informed search algorithm that finds an optimal path by combining the actual path cost and the estimated cost to reach the goal. It uses a priority queue to select the node with the lowest estimated total cost.
 
-In this algorithm, each movement has a cost of 1. The algorithm starts from the initial state, generates possible successor states, and inserts them into the priority queue according to their path costs.
+In this algorithm, each movement has a cost of 1. The algorithm starts from the initial state, generates possible successor states and inserts them into the priority queue according to their evaluation values.
 
-A visited set is maintained to avoid exploring the same state repeatedly. The process continues until the goal state is reached or no states remain to explore.
+A visited set is maintained to avoid repeatedly exploring the same states.
+
+For the 8 Puzzle Problem, **Manhattan Distance** is used as the heuristic function. It calculates the total horizontal and vertical distance of each numbered tile from its correct goal position. The blank space (0) is ignored.
 
 The evaluation function is:
+
 \[
-f(n)=g(n)
+f(n)=g(n)+h(n)
 \]
 
 Where:
-- \(g(n)\) is the path cost from the initial state to the current node.
-- \(f(n)\) is the priority of the node.
-Conclusion: The 8 Puzzle problem is solved using Uniform Cost Search by exploring states according to their cumulative path costs.
 
+- \(g(n)\) is the actual path cost from the initial state to the current node.
+- \(h(n)\) is the estimated cost from the current node to the goal state.
+- \(f(n)\) is the estimated total cost of the path.
 
+The Manhattan Distance heuristic is:
+
+\[
+h(n)=\sum_{i=1}^{8}(|x_i-x_i^*|+|y_i-y_i^*|)
+\]
+
+Where:
+- \(x_i,y_i\) represent the current position of a tile.
+- \(x_i^*,y_i^*\) represent its goal position.
+
+A* continues expanding the most promising states until the goal state is reached or the priority queue becomes empty.
+
+## Conclusion
+
+The 8 Puzzle Problem is successfully implemented using the A* Search Algorithm. The algorithm uses a priority queue and Manhattan Distance heuristic to find an optimal solution with minimum movements.
