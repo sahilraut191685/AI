@@ -54,3 +54,37 @@ while pq:
 
 else:
     print("No solution")
+
+
+
+
+
+=============================THEORY===========================================
+
+
+Practical 2: 8 Puzzle Problem using Uniform Cost Search
+Aim: To implement the 8 Puzzle Problem using Uniform Cost Search in Python.
+
+Theory:
+
+The 8 Puzzle Problem is a classical Artificial Intelligence search problem consisting of a 3 × 3 board containing eight numbered tiles and one blank space represented by zero.
+
+The objective is to rearrange the tiles from the initial state to the desired goal state by moving adjacent tiles into the blank space.
+
+Uniform Cost Search (UCS) is an uninformed search algorithm that expands the node having the lowest cumulative path cost. It uses a priority queue to select the next node for exploration.
+
+In this algorithm, each movement has a cost of 1. The algorithm starts from the initial state, generates possible successor states, and inserts them into the priority queue according to their path costs.
+
+A visited set is maintained to avoid exploring the same state repeatedly. The process continues until the goal state is reached or no states remain to explore.
+
+The evaluation function is:
+\[
+f(n)=g(n)
+\]
+
+Where:
+- \(g(n)\) is the path cost from the initial state to the current node.
+- \(f(n)\) is the priority of the node.
+Conclusion: The 8 Puzzle problem is solved using Uniform Cost Search by exploring states according to their cumulative path costs.
+
+
