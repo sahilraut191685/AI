@@ -54,3 +54,40 @@ while queue:
             if new_state not in visited:
                 visited.add(new_state)
                 queue.append((new_state, path))
+
+
+
+
+
+Practical 5: 8 Puzzle Problem using Breadth First Search (BFS)
+Aim: To implement the 8 Puzzle Problem using Breadth First Search in Python.
+
+Theory:
+
+The 8 Puzzle Problem is a state-space search problem in Artificial Intelligence. It consists of a 3 × 3 board containing eight numbered tiles and one blank space represented by zero. The objective is to rearrange the tiles into a predefined goal configuration by moving adjacent tiles into the blank space.
+
+Breadth First Search (BFS) is an uninformed search algorithm that explores the search tree level by level. It first explores all nodes at depth zero, then depth one, followed by depth two, and so on.
+
+BFS uses a Queue data structure that follows the FIFO (First In, First Out) principle. The algorithm starts from the initial state and generates all possible successor states. Each newly generated state is added to the queue if it has not already been visited.
+
+A visited set is maintained to prevent repeated exploration of states. The algorithm continues until the goal state is found or the queue becomes empty.
+
+Properties of BFS:
+1. It explores nodes level by level.
+2. It uses a Queue data structure.
+3. It is complete when the branching factor is finite and a solution exists at finite depth.
+4. It finds the shortest path when all actions have equal costs.
+Time Complexity:
+\[
+O(b^d)
+\]
+
+Space Complexity:
+\[
+O(b^d)
+\]
+
+Where:
+- \(b\) = Branching factor (maximum number of successor nodes).
+- \(d\) = Depth of the shallowest goal node.
+Conclusion: The 8 Puzzle Problem is successfully solved using Breadth First Search by exploring states level by level until the goal configuration is reached.
